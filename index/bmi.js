@@ -70,23 +70,95 @@ send.addEventListener('click', function (e) {
         time:month + "-" + day + "-" + year});
 })
 
+//刪除紀錄
+// let del = firebase.database().ref('bmi/');
+// deleteALL.addEventListener('click',function(e){
+//     del.ref('bmi/').remove
+// }
+
 //顯示內容到網站
 bmi.on('value',function(snapshot){
-    let str2 = " ";
     let str = " ";
     let data = snapshot.val();
     for(let item in data){
-        str+='<li class="listItem" >'
-        +data[item].status
-        +'<p>BMI'+data[item].bmiresult+'</p>'
-        +'<p>身高'+data[item].height+'</p>'
-        +'<p>體重'+data[item].weight+'</p>'
-        +'<p>日期'+data[item].time+'</p>'
-        '</li>';
+        if(data[item].status == "過輕"){
+            text = "<li class=listItem style='border-left: 7px #31baf9 solid'>"
+            +data[item].status
+            +'<p>BMI'+data[item].bmiresult+'</p>'
+            +'<p>身高'+data[item].height+'</p>'
+            +'<p>體重'+data[item].weight+'</p>'
+            +'<p>日期'+data[item].time+'</p>'
+            '</li>'
+        };
+        if(data[item].status == "理想"){
+            text = "<li class=listItem  style='border-left: 7px #86d73f solid'>"
+            +data[item].status
+            +'<p>BMI'+data[item].bmiresult+'</p>'
+            +'<p>身高'+data[item].height+'</p>'
+            +'<p>體重'+data[item].weight+'</p>'
+            +'<p>日期'+data[item].time+'</p>'
+            '</li>'
+        };
+        if(data[item].status == "過重"){
+            text = "<li class=listItem  style='border-left: 7px #ff982d solid'>"
+            +data[item].status
+            +'<p>BMI'+data[item].bmiresult+'</p>'
+            +'<p>身高'+data[item].height+'</p>'
+            +'<p>體重'+data[item].weight+'</p>'
+            +'<p>日期'+data[item].time+'</p>'
+            '</li>'
+        };
+        if(data[item].status == "輕度肥胖"){
+            text = "<li class=listItem  style='border-left: 7px #ff6c03 solid'>"
+            +data[item].status
+            +'<p>BMI'+data[item].bmiresult+'</p>'
+            +'<p>身高'+data[item].height+'</p>'
+            +'<p>體重'+data[item].weight+'</p>'
+            +'<p>日期'+data[item].time+'</p>'
+            '</li>'
+        };
+        if(data[item].status == "中度肥胖"){
+            text = "<li class=listItem  style='border-left: 7px #ff6c03 solid'>"
+            +data[item].status
+            +'<p>BMI'+data[item].bmiresult+'</p>'
+            +'<p>身高'+data[item].height+'</p>'
+            +'<p>體重'+data[item].weight+'</p>'
+            +'<p>日期'+data[item].time+'</p>'
+            '</li>'
+        };
+        if(data[item].status == "重度肥胖"){
+            text = "<li class=listItem  style='border-left: 7px #ff1200 solid'>"
+            +data[item].status
+            +'<p>BMI'+data[item].bmiresult+'</p>'
+            +'<p>身高'+data[item].height+'</p>'
+            +'<p>體重'+data[item].weight+'</p>'
+            +'<p>日期'+data[item].time+'</p>'
+            '</li>'
+        };
+        str+= text;
     }
     list.innerHTML=str;
 })
-//刪除紀錄
-// deleteALL.addEventListener('click',function(e){
+
+
+
 
 // })
+// if(data[item].status == "過輕"){
+//     test = "<li class=listItem style='border-left: 7px #31baf9 solid'>"
+//     +data[item].status
+//     +'<p>BMI'+data[item].bmiresult+'</p>'
+//     +'<p>身高'+data[item].height+'</p>'
+//     +'<p>體重'+data[item].weight+'</p>'
+//     +'<p>日期'+data[item].time+'</p>'
+//     '</li>'
+// };
+// if(data[item].status == "理想"){
+//     test = "<li class=listItem  style='border-left: 7px #86d73f solid'>"
+//     +data[item].status
+//     +'<p>BMI'+data[item].bmiresult+'</p>'
+//     +'<p>身高'+data[item].height+'</p>'
+//     +'<p>體重'+data[item].weight+'</p>'
+//     +'<p>日期'+data[item].time+'</p>'
+//     '</li>'
+// };
